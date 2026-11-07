@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../_app/immutable/entry/start.UbC9wb1m.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CEoR8_uF.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/B0hHLpy6.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/X65EveBi.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.BhY8Nnvj.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CsZKcXWi.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CmmmGA56.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DiygzavV.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/3zBoA2Cv.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/0.Bso7magM.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CLvjXtKm.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/5.kn8jjWgs.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BE5D5nzO.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BHkCojhB.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/kskpm4rp.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/QpXRUI1x.js" rel="modulepreload">
+		<!--e2jw2j--><!----><title>#4471 split · three date bugs, not one · support kb</title>
+		<link href="../../_app/immutable/assets/runbook.BhhgOc_n.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/Callout.yLErXQDM.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/CauseTable.DuKfINX_.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/5.CMZ6TBbc.css" rel="stylesheet">
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 split · three date bugs, not one</h1> <p class="meta svelte-e2jw2j"><span>owner <b>Aniket Kulkarni</b></span> <span class="status open svelte-e2jw2j">open</span> <span class="svelte-e2jw2j">reviewed 2026-11-07 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> is marked <strong>known: one issue, one fix queued</strong>. The reports in it
+describe three different bugs. The queued parser fix closes only the first one. Each bug now has a
+ticket of its own, and the counts below come from the merged reports at render time.</p> <aside class="warn svelte-17bri61"><!---->Do not close #4471 when the parser fix ships. The booking-v3 form and the one-day moves will keep
+coming in, and both need their own fixes.<!----></aside><!----> <h2>What #4471 holds</h2> <p class="sum svelte-12oyimm"><strong>412</strong> reports merged into #4471 · <strong>3</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>parser</code></td><td class="svelte-12oyimm">374</td><td class="tags svelte-12oyimm">parser ×351 · hint ×23</td><td class="svelte-12oyimm">11</td><td class="svelte-12oyimm">2026-04-01 → 2026-10-04</td><td class="svelte-12oyimm"><!--[0--><a href="https://github.com/aniket-kulkarni/mega-s01e03-4471/issues/1">aniket-kulkarni/mega-s01e03-4471/issues/1</a><!--]--></td></tr><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>hint</code></td><td class="svelte-12oyimm">33</td><td class="tags svelte-12oyimm">hint ×18 · parser ×15</td><td class="svelte-12oyimm">3</td><td class="svelte-12oyimm">2026-04-17 → 2026-09-22</td><td class="svelte-12oyimm"><!--[0--><a href="https://github.com/aniket-kulkarni/mega-s01e03-4471/issues/2">aniket-kulkarni/mega-s01e03-4471/issues/2</a><!--]--></td></tr><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>shift</code></td><td class="svelte-12oyimm">5</td><td class="tags svelte-12oyimm">parser ×5</td><td class="svelte-12oyimm">5</td><td class="svelte-12oyimm">2026-04-02 → 2026-10-04</td><td class="svelte-12oyimm"><!--[0--><a href="https://github.com/aniket-kulkarni/mega-s01e03-4471/issues/3">aniket-kulkarni/mega-s01e03-4471/issues/3</a><!--]--></td></tr><!--]--></tbody></table> <!--[--><!--[-1--><!--]--><!--[-1--><!--]--><!--[-1--><!--]--><!--]--><!----> <h2>The three bugs</h2> <ul><li><strong><code>parser</code>: the shared parser reads dates month first</strong> (<a href="https://github.com/aniket-kulkarni/mega-s01e03-4471/issues/1">ticket</a>). Our tenants
+write the day first, so day and month swap. It covers app and email reports from every tenant, and
+form reports from booking-v2 tenants, whose hint already says <code>DD/MM/YYYY</code>.</li> <li><strong><code>hint</code>: booking-v3 asks for month first and reads day first</strong> (<a href="https://github.com/aniket-kulkarni/mega-s01e03-4471/issues/2">ticket</a>). The form
+prints <code>MM/DD/YYYY</code> under its date field. People type what it says, and the form reads the
+tenant’s way. These are form reports from booking-v3 tenants only. The parser fix does not touch
+them.</li> <li><strong><code>shift</code>: the date moves by one day</strong> (<a href="https://github.com/aniket-kulkarni/mega-s01e03-4471/issues/3">ticket</a>). Day and month are not swapped.
+Lisbon gets Tuesday and Toronto gets Monday, “only June” is off, and an invite arrives before the
+booking. That is a time-zone or daylight-saving bug. The desk already noted these reports as a
+one-day move (<code>desk-notes.json</code>). Until now the table filed them under <code>parser</code> by tenant.</li></ul> <h2>How the split was made</h2> <ul><li>One id, one report: the export pages overlap, so repeated rows are dropped first.</li> <li>The cause comes from the tenant (its locale and booking form, <code>locales.ts</code>), never from intake’s tag.
+Intake guesses from the reporter’s browser. The <code>tagged as</code> column shows how often that guess is
+wrong.</li> <li>A report the desk read as a one-day move is <code>shift</code>, whatever its tenant.</li></ul> <h2>For the desk</h2> <ul><li>Triage by subject (<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>) merged all three bugs
+because the reports share subject lines. Before you merge into a big ticket, check the cause with
+the <a href="/kb/triage/dedupe">dedupe explorer</a>.</li> <li>New date reports: file <code>hint</code> under the booking-v3 ticket, <code>shift</code> under the time-zone ticket, and
+the rest under #4471.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-VGKM-4ENY</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_r8psaj = {
+						base: new URL("../..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.UbC9wb1m.js"),
+						import("../../_app/immutable/entry/app.BhY8Nnvj.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>
